@@ -3,6 +3,7 @@ import { ENV } from "./lib/env";
 import cors from "cors";
 import mongoose from "mongoose";
 import dns from "node:dns";
+import { errorHandler } from "./lib/globalErrorHandler";
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 const app = express();
@@ -14,6 +15,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.options("/{*path}", cors(corsOptions));
+app.use(errorHandler);
 
 const startServer = async () => {
     try {
