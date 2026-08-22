@@ -7,7 +7,7 @@ export interface ITrip {
     endDate: Date,
     city: string,
     country: string,
-    itinery: [{
+    itineraryy: [{
         startDate: Date,
         endDate: Date,
         budget: number,
@@ -21,7 +21,7 @@ const tripSchema = new mongoose.Schema<ITrip> ({
         required: true,
         trim: true,
         minlength: 3,
-        maxLength: 10
+        maxlength: 20
     },
     startDate: {
         type: Date,
@@ -41,7 +41,7 @@ const tripSchema = new mongoose.Schema<ITrip> ({
         required: true,
         trim: true
     },
-    itinery: [{
+    itineraryy: [{
         startDate: {
             type: Date,
             required: true,
