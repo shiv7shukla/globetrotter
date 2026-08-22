@@ -10,6 +10,7 @@
     // See also https://aka.ms/tsconfig/module
     "module": "preserve",
     "moduleResolution": "bundler",
+    "noEmit": true,
     "target": "esnext",
     "types": ["node"],
     // For nodejs:
