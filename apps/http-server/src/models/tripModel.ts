@@ -7,7 +7,7 @@ export interface ITrip {
     endDate: Date,
     city: string,
     country: string,
-    itineraryy: [{
+    itinerary?: [{
         startDate: Date,
         endDate: Date,
         budget: number,
@@ -41,24 +41,24 @@ const tripSchema = new mongoose.Schema<ITrip> ({
         required: true,
         trim: true
     },
-    itineraryy: [{
-        startDate: {
-            type: Date,
-            required: true,
-        },
-        endDate: {
-            type: Date,
-            required: true,
-        },
-        budget: {
-            type: Number,
-            required: true,
-            min: 0
-        },
-        description: {
-            type: String,
-        }
-    }]
+    itinerary: {
+        type: [{
+            startDate: {
+                type: Date,
+            },
+            endDate: {
+                type: Date,
+            },
+            budget: {
+                type: Number,
+                min: 0
+            },
+            description: {
+                type: String,
+            }
+        }],
+        default: []
+    }
 }, { timestamps: true });
 
 export const Trip = mongoose.models.Trip as mongoose.Model<ITrip> || mongoose.model<ITrip>("Trip", tripSchema);
