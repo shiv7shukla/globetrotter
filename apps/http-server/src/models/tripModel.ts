@@ -6,38 +6,59 @@ export interface ITrip {
     startDate: Date,
     endDate: Date,
     city: string,
-    country: string
+    country: string,
+    itinery: [{
+        startDate: Date,
+        endDate: Date,
+        budget: number,
+        description: string
+    }]
 };
 
 const tripSchema = new mongoose.Schema<ITrip> ({
     tripName: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        minlength: 3,
+        maxLength: 10
     },
     startDate: {
         type: Date,
         required: true,
-        trim: true
     },
     endDate: {
         type: Date,
         required: true,
-        unique: true,
-        trim: true
     },
     city: {
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
     country: {
         type: String,
         required: true,
-        unique: true,
         trim: true
-    }
+    },
+    itinery: [{
+        startDate: {
+            type: Date,
+            required: true,
+        },
+        endDate: {
+            type: Date,
+            required: true,
+        },
+        budget: {
+            type: Number,
+            required: true,
+            min: 0
+        },
+        description: {
+            type: String,
+        }
+    }]
 }, { timestamps: true });
 
 export const Trip = mongoose.models.Trip as mongoose.Model<ITrip> || mongoose.model<ITrip>("Trip", tripSchema);
