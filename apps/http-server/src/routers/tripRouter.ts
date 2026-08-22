@@ -2,6 +2,6 @@ import { Router } from "express";
 import { validate } from "../middlewares/validate";
 import { newTripSchema } from "../schemas/trip.schema";
 
-export const userRouter: Router = Router();
+export const tripRouter: Router = Router();
 
-userRouter.post("/newtrip", validate(newTripSchema), );
+tripRouter.post("/newtrip", validate(newTripSchema), );

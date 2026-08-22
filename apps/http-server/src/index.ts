@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import dns from "node:dns";
 import { errorHandler } from "./lib/globalErrorHandler";
 import { userRouter } from "./routers/userRouter";
+import { tripRouter } from "./routers/tripRouter";
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.options("/{*path}", cors(corsOptions));
 app.use("/api/user", userRouter);
+app.use("/api/trip", tripRouter);
 app.use(errorHandler);
 
 const startServer = async () => {
