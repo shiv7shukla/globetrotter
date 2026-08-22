@@ -40,13 +40,11 @@ const userSchema = new mongoose.Schema<IUser> ({
     city: {
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
     country: {
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
     phoneNumber: {

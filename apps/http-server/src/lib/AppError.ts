@@ -12,7 +12,7 @@ export class AppError extends Error {
 
 export class ValidationError extends AppError {
     constructor(message: string, details?: Record<string, string[] | undefined>) {
-        super(400, "VALIDATION_ERROR", message,true, details);
+        super(400, "VALIDATION_ERROR", message, true, details);
     }
 }
 
@@ -37,5 +37,11 @@ export class UnauthorizedError extends AppError {
 export class ForbiddenError extends AppError {
     constructor(message = "You don't have permission to do this") {
         super(403, "FORBIDDEN", message);
+    }
+}
+
+export class DatabaseError extends AppError {
+    constructor(message = "A database error occurred") {
+        super(500, "DATABASE_ERROR", message, false);
     }
 }
